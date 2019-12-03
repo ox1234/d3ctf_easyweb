@@ -1,0 +1,19 @@
+version: '2'
+services:
+  php7.2-apache-mysql:
+    build: ./
+    volumes:
+      - ./CodeIgniter-3.1.11:/var/www/html/
+    # environment:
+    #   - DB_HOSTNAME=mysql
+    #   - DB_USERNAME=root
+    #   - DB_PASSWORD=root
+    ports:
+      - "80:80"
+    links:
+      - mysql
+      
+  mysql:
+    build: ./mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
